@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+      <section style="margin-top: 20px;min-height: 80vh;" class="">
+        <!-- <%if(order.status !="Cancelled" ){%>
+        <div class="container mt-5 ">
+          <div class="row ">
+            <div style="margin: auto;border-radius: 20px;" class="col-12 col-md-10 hh-grayBox pt45 pb20 text-center">
+              <div class="row justify-content-between">
+                <div class="order-tracking">
+                  <span class="is-complete"></span>
+                  <p>Ordered<br><span></span></p>
+                </div>
+                <div class="order-tracking">
+                  <span class="is-complete"></span>
+                  <p>Shipped<br><span></span></p>
+                </div>
+                <div class="order-tracking">
+                  <span class="is-complete"></span>
+                  <p>Delivered<br><span></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%}else{%> -->
+          <h1 class="text-center text-danger mt-5">Order Cancel Process</h1>
+          <!-- <%}%> -->
+            <div class="container">
+              <div class="row">
+                <section class="h-100 gradient-custom">
+                  <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                      <div class="col-lg-10 col-xl-8">
+                        <div class="card" style="border-radius: 10px;">
+
+                          <div class="card-header px-4 py-5 text-gray-400 text-center">
+                            <h5 class="text-muted mb-0">Ordered Products <span style="color: #a8729a;"></span></h5>
+                          </div>
+                          
+                          <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <a class="btn" href="/invoice/<%=order._id%>"><p class="mb-0" style="color: #000000;">Invoice</p></a>
+                              
+                              </p>
+                              
+                            </div>
+                            <p class="small text-muted mb-0">Order Id : order_Kzkp73rgl9U2cl
+                              <div class="card shadow-0 border mb-4">
+                                <a href="/view-products/<%=x.product._id%>">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <div class="col-md-2">
+                                        
+                                        <img src="{{p.lap_image.url}}" class="img-fluid"
+                                          alt="Phone">
+                                      </div>
+                                      <div
+                                        class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0">
+                                          {{refund.product.Lap_name}}
+                                        </p>
+                                      </div>
+                                      <div class="col text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">
+                                          {{refund.product.brand}}
+                                          - {{refund.product.lap_type}}<br>Speciffications :
+                                          {{refund.product.specification.processor}} - {{refund.product.specification.storage}}GB -
+                                          {{refund.product.specification.ram}}GB
+                                        </p>
+                                      </div>
+                                      <div
+                                        class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">Quantity : {{refund.quantity}}
+                                        </p>
+                                      </div>
+                                      <div
+                                        class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">Price : ₹{{refund.product.discounted_price}} <br><del>MRP : ₹
+                                          {{refund.product.actual_price}}</del></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                              <!-- <% }) %> -->
+                              <div class="d-flex justify-content-between pt-2">
+                                <p class="fw-bold mb-0"></p>
+                                <a href="">
+                                  <!-- <button style="font-size: 20px !important; margin-bottom: 150px !important;">CONFRIM</button> -->
+                                </a>
+                                                             <!-- Button trigger modal -->
+<button id="sp-btn"  type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="font-size: 20px !important; margin-bottom: 150px !important;">
+  CONFRIM
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel threed">ORDER CANCEL SUCCESSFULLY</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Refund Amount {{refund.total}} will be Refunded within 1 Week
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="sp-btn" style="width: 20%; margin-left: 30px;" data-bs-dismiss="modal">Close</button>
+        <a href="/"><button type="button" id="sp-btn" style="width: 80%;margin-left: 30px;">Back to Home</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+                                
+                              </div>
+ 
+
+                                <!-- <div class="d-flex justify-content-between pt-2">
+                                  <p class="fw-bold mb-0">Order Details</p>
+
+                                </div>
+
+                                <div class="d-flex justify-content-between pt-2">
+                                  <p class="text-muted mb-0">
+                                    {{refund.user}} <br> Address :
+                                      <%=order.deliveryDetails.address%>
+                                  </p>
+
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                  <p class="text-muted mb-0"> Date - <%=order.date%> <br>Time - <%=order.time%>
+                                  </p>
+                                  <p class="text-muted mb-0"> </p>
+                                  
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-5">
+                                  <p class="text-muted mb-0"><span class="fw-bold me-4">Total paid: </span> ₹
+                                    <%=order.totalAmount%>
+                                      <br>
+                                      <%if(order.discount >0 ){%>
+                                        <span class="fw-bold me-4">Discount : </span>
+                                        ₹<%=order.discount%> <br> <span class="fw-bold me-4">Total : </span> ₹
+                                        <%=order.totalAmount+order.discount%>
+                                            <%}else{%> <span class="fw-bold me-4">Discount : </span>₹0.00
+                                              <%}%> <br>
+                                                <%if(order.refund >0 ){%><span class="fw-bold me-4">Refund : </span>
+                                                  ₹<%=order.refund%>
+                                                    <%}%>
+                                  </p>
+                                  <p class="text-muted mb-0"></p>
+                                </div>
+                          </div>
+                         
+                          <div class="card-footer border-0 px-4 py-5"
+                            style="background-color: rgb(121, 121, 121); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            <%if(order.refund=="" ){%>
+                              <h6 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
+                                Total
+                                paid: <span class="h4 mb-0 ms-2">
+                                  ₹ <%=order.totalAmount%>
+                                    <%}else{%>
+                                      <h6
+                                        class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
+                                        Refund
+                                        : <span class="h4 mb-0 ms-2">₹ <%=order.refund%>
+                                            <%}%>
+                                        </span></h6>
+                          </div> -->
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+
+
+              </div>
+
+      </section>
+<section>
+</section>
+<style>
+			
+
+
+  #sp-btn {
+  align-items: center;
+  background-color: black;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#sp-btn:hover {
+  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+#threed {
+    color: #CCCCCC;
+    text-shadow: 0 1px 0 #999999, 0 2px 0 #888888,
+             0 3px 0 #777777, 0 4px 0 #666666,
+             0 5px 0 #555555, 0 6px 0 #444444,
+             0 7px 0 #333333, 0 8px 7px rgba(0, 0, 0, 0.4),
+             0 9px 10px rgba(0, 0, 0, 0.2);
+}
+		</style>
+
+      <style>
+        body {
+          background: #eee;
+        }
+        .hh-grayBox {
+          background-color: #F8F8F8;
+          margin-bottom: 20px;
+          padding: 35px;
+          margin-top: 20px;
+        }
+        .pt45 {
+          padding-top: 45px;
+        }
+        .order-tracking {
+          text-align: center;
+          width: 33.33%;
+          position: relative;
+          display: block;
+        }
+        .order-tracking .is-complete {
+          display: block;
+          position: relative;
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+          border: 0px solid #AFAFAF;
+          background-color: #f7be16;
+          margin: 0 auto;
+          transition: background 0.25s linear;
+          -webkit-transition: background 0.25s linear;
+          z-index: 2;
+        }
+        .order-tracking .is-complete:after {
+          display: block;
+          position: absolute;
+          content: '';
+          height: 14px;
+          width: 7px;
+          top: -2px;
+          bottom: 0;
+          left: 5px;
+          margin: auto 0;
+          border: 0px solid #AFAFAF;
+          border-width: 0px 2px 2px 0;
+          transform: rotate(45deg);
+          opacity: 0;
+        }
+        .order-tracking.completed .is-complete {
+          border-color: #27aa80;
+          border-width: 0px;
+          background-color: #27aa80;
+        }
+        .order-tracking.completed .is-complete:after {
+          border-color: #fff;
+          border-width: 0px 3px 3px 0;
+          width: 7px;
+          left: 11px;
+          opacity: 1;
+        }
+        .order-tracking p {
+          color: #A4A4A4;
+          font-size: 16px;
+          margin-top: 8px;
+          margin-bottom: 0;
+          line-height: 20px;
+        }
+        .order-tracking p span {
+          font-size: 14px;
+        }
+        .order-tracking.completed p {
+          color: #000;
+        }
+        .order-tracking::before {
+          content: '';
+          display: block;
+          height: 3px;
+          width: calc(100% - 40px);
+          background-color: #f7be16;
+          top: 13px;
+          position: absolute;
+          left: calc(-50% + 20px);
+          z-index: 0;
+        }
+        .order-tracking:first-child:before {
+          display: none;
+        }
+        .order-tracking.completed:before {
+          background-color: #27aa80;
+        }
+      </style>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    {% endblock main %}

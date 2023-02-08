@@ -1,0 +1,258 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+{% if order_placed %}
+<div style="height: auto;" class="page">
+    <div  class="container mt-5 ">
+        <div  class="row ">
+            <div style="margin: auto;border-radius: 20px;" class="col-12 col-md-10 hh-grayBox pt45 pb20 text-center">
+                <div class="row justify-content-between">
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>Ordered<br><span>Mon, June 24</span></p>
+                    </div>
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>Shipped<br><span>Tue, June 25</span></p>
+                    </div>
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>Delivered<br><span>Fri, June 28</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="container d-flex justify-content-center my-5" >
+			<a href="/">
+		<button class="btn-success" style="height: 50px;width: 450px; border-radius: 50px	;">Back To Home</button></a>
+	</div>
+    </div>
+    
+    
+    
+    <div class="d-flex justify-content-center container mt-5 mb-3">
+		<div class="row">
+        {% for x in order_placed %}
+		<div class="col-6">
+		
+        <div class="card p-3 bg-white mb-3"><i class="fa fa-apple"></i>
+    
+    
+            <div class="about-product text-center mt-2"><img src="{{x.product.lap_image.url}}" width="300">
+                <div>
+                    <h4>{{x.product.Lap_name}}</h4>
+                    <h6 class="mt-0 text-black-50">{{x.product.brand}} - {{x.product.lap_type}}</h6>
+                </div>
+            </div>
+            <div class="stats mt-2">
+                <div class="d-flex justify-content-between p-price"><span>Processor</span><span>{{x.product.specification.processor}}</span>
+                </div>
+                <div class="d-flex justify-content-between p-price"><span>RAM & Storage</span><span>{{x.product.specification.ram}}GB - {{x.product.specification.storage}}GB</span></div>
+   
+                <div class="d-flex justify-content-between p-price"><span>quantity</span><span>{{x.quantity}}
+                        </span>
+                </div>
+                <div class="d-flex justify-content-between p-price"><span>status</span><span
+                        style="color: blue;">{{x.status}}</span></div>
+            </div>
+            <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                <span>Total</span><span style="color: black;">₹ {{x.payment.amount}}</span>
+            </div>
+			
+           
+            <a href="{% url 'cancel_order' x.id %}" class=" btn-danger" style="height: 40px;width: 400px; border-radius: 50px	;font-size: larger; text-align: center;">Cancel Order</a>
+            
+            
+            
+           
+    
+    
+        </div>
+	</div>
+        {% endfor %}
+	</div>
+    </div>
+</div>
+
+<style>
+	.card {
+		width: 444px;
+	}
+
+	body {
+		background: #eee;
+	}
+
+	.hh-grayBox {
+		background-color: #F8F8F8;
+		margin-bottom: 20px;
+		padding: 35px;
+		margin-top: 20px;
+	}
+
+	.pt45 {
+		padding-top: 45px;
+	}
+
+	.order-tracking {
+		text-align: center;
+		width: 33.33%;
+		position: relative;
+		display: block;
+	}
+
+	.order-tracking .is-complete {
+		display: block;
+		position: relative;
+		border-radius: 50%;
+		height: 30px;
+		width: 30px;
+		border: 0px solid #AFAFAF;
+		background-color: #f7be16;
+		margin: 0 auto;
+		transition: background 0.25s linear;
+		-webkit-transition: background 0.25s linear;
+		z-index: 2;
+	}
+
+	.order-tracking .is-complete:after {
+		display: block;
+		position: absolute;
+		content: '';
+		height: 14px;
+		width: 7px;
+		top: -2px;
+		bottom: 0;
+		left: 5px;
+		margin: auto 0;
+		border: 0px solid #AFAFAF;
+		border-width: 0px 2px 2px 0;
+		transform: rotate(45deg);
+		opacity: 0;
+	}
+
+	.order-tracking.completed .is-complete {
+		border-color: #27aa80;
+		border-width: 0px;
+		background-color: #27aa80;
+	}
+
+	.order-tracking.completed .is-complete:after {
+		border-color: #fff;
+		border-width: 0px 3px 3px 0;
+		width: 7px;
+		left: 11px;
+		opacity: 1;
+	}
+
+	.order-tracking p {
+		color: #A4A4A4;
+		font-size: 16px;
+		margin-top: 8px;
+		margin-bottom: 0;
+		line-height: 20px;
+	}
+
+	.order-tracking p span {
+		font-size: 14px;
+	}
+
+	.order-tracking.completed p {
+		color: #000;
+	}
+
+	.order-tracking::before {
+		content: '';
+		display: block;
+		height: 3px;
+		width: calc(100% - 40px);
+		background-color: #f7be16;
+		top: 13px;
+		position: absolute;
+		left: calc(-50% + 20px);
+		z-index: 0;
+	}
+
+	.order-tracking:first-child:before {
+		display: none;
+	}
+
+	.order-tracking.completed:before {
+		background-color: #27aa80;
+	}
+</style>
+
+{% else %}
+<style>
+	@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+
+
+	.mt-100 {
+		margin-top: 100px;
+
+	}
+
+
+	.card {
+		margin-bottom: 30px;
+		border: 0;
+		-webkit-transition: all .3s ease;
+		transition: all .3s ease;
+		letter-spacing: .5px;
+		border-radius: 8px;
+		-webkit-box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+		box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+	}
+
+	.card .card-header {
+
+		border-bottom: none;
+		padding: 24px;
+
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+	}
+
+	.card-header:first-child {
+		border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+	}
+</style>
+<div style="height: 75vh;" class="container-fluid   mt-100">
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div style="width: 50%;margin: auto;" class="card ">
+
+				<div class="card-body cart">
+					<div class="col-sm-12 empty-cart-cls text-center">
+						<img src="https://i.imgur.com/dCdflKN.png" width="130" height="130"
+							class="img-fluid mb-4 mr-3">
+						<h3><strong>Your Orders Page  is Empty</strong></h3>
+						<h4>Add something to make me happy :)</h4>
+
+
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+	<div class="container text-center mt-3">
+		<a class="btn btn-primary" href="/shop">Back To Shopping</a>
+	</div>
+</div>
+
+
+{% endif %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/javascripts/addToCart.js"></script>
+
+{% endblock main %}

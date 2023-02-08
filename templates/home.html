@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+{% load static %}
+   
+{% block head %}
+    <link href="{% static 'admin-css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css\style.css' %}" rel="stylesheet">
+
+
+{% endblock head %}
+
+
+{% block main %}
+
+
+
+
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+	<div class="carousel-indicators">
+	  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active bg-primary" aria-current="true" aria-label="Slide 1"></button>
+	  <button type="button " data-bs-target="#carouselExampleDark" data-bs-slide-to="1" class="bg-primary" aria-label="Slide 2"></button>
+	  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" class="bg-primary" aria-label="Slide 3"></button>
+	</div>
+	<div class="carousel-inner">
+	  <div class="carousel-item active" data-bs-interval="10000">
+		<img class="d-block w-100" src="{% static 'images\banner\image-1655481098322-.jpeg' %}" alt="First slide" height="600px" width="1000px">
+		<div class="carousel-caption d-none d-md-block">
+			<div  id="redirect" style="visibility: hidden">
+		  <h5 class="text-white fw-bold" style="font-size: 50px !important; margin-bottom: 18px !important;"> PROFESSIONAL LAPTOPS		</h5>
+		  <p class="fs-1 text-white fw-bold mb-5" style="font-size: 20px !important; margin-bottom: 15px !important;">			YOU CAN GET 25% OFFER IN THIS WEEK		</p>
+		  <a href="{% url 'shop_page' %}"><button id="sp-btn" style="font-size: 20px !important; margin-bottom: 150px !important;">SHOP ALL PRODUCTS</button></a> 
+		  <!-- <p><a href="{% url 'shop_page' %}" class="btn btn-primary fs-1 w-50"  style="font-size: 20px !important; margin-bottom: 150px !important;">Shop Collections</a></p> -->
+		</div></div>
+	  </div>
+	  <div class="carousel-item" data-bs-interval="2000">
+		<img class="d-block" src="{% static 'images/banner/image-1655477745723-.jpg' %}" alt="Second slide" height="600px">
+		<div class="carousel-caption d-none d-md-block">
+			<div>
+
+			<h5 class="text-white fw-bold mb-5"  style="font-size: 50px !important; margin-bottom: 18px !important;"> GAMING LAPTOPS		</h5>
+			<p class="fs-1 text-white fw-bold mb-5" style="font-size: 20px !important; margin-bottom: 15px !important;">			YOU CAN GET 25% OFFER IN THIS WEEK		</p>
+		  
+		  <p>
+			<a href="{% url 'shop_page' %}"><button id="sp-btn" style="font-size: 20px !important; margin-bottom: 150px !important;">SHOP ALL PRODUCTS</button></a>
+			<!-- <a href="{% url 'shop_page' %}" class="btn btn-primary fs-1 w-50"  style="font-size: 20px !important; margin-bottom: 150px !important;">Shop Collections</a> -->
+		</p>
+			</div>
+		</div>
+	  </div>
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="{% static 'images/banner/image-1655480966572-.jpg' %}" alt="Third slide" height="600px">
+		<div class="carousel-caption d-none d-md-block">
+			<div>
+
+			<h5 class="text-white fw-bold mb-5" style="font-size: 50px !important; margin-bottom: 18px !important;"> STUDENT LAPTOPS</h5>
+		  
+		  <p class="fs-1 text-white fw-bold mb-5"  style="font-size: 20px !important; margin-bottom: 15px !important;">YOU CAN GET 25% OFFER IN THIS WEEK</p>
+		  
+		  <p><a href="{% url 'shop_page' %}"><button id="sp-btn" style="font-size: 20px !important; margin-bottom: 150px !important;">SHOP ALL PRODUCTS</button></a>
+			<!-- <a href="{% url 'shop_page' %}" class="btn btn-primary fs-1 w-50"  style="font-size: 20px !important; margin-bottom: 150px !important;">Shop Collections</a></p> -->
+			</div>
+		</div>
+	  </div>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+	  <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
+	  <span class="visually-hidden bg-primary">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+	  <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
+	  <span class="visually-hidden bg-light">Next</span>
+	</button>
+  </div>
+
+
+
+		<div class="colorlib-intro mb-5 mt-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<h3 class="">Shop from a wide range of laptops from HP, Dell, Lenovo, Realme, Asus, Acer,
+							Vaio & more at India's Best Online Shopping Store.</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 mt-3">
+					<div class="card bg-dark text-white">
+						<img  src="{% static 'images/banner/page2/image-1655528647328-.jpg' %}"
+							class="card-img img-fluid" alt="...">
+						<div class="card-img-overlay">
+						</div>
+					</div>
+				</div>
+                
+			
+
+				
+			</div>
+			
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 mt-3">
+					<div class="card bg-dark text-white">
+						<img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Laptops/D24645474_IN_PC-Gamezone-Re-Vamp_1242x450_2.jpg"
+							class="card-img" alt="...">
+						<div class="card-img-overlay">
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 mt-3">
+					<div class="card bg-dark text-white">
+						<img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Laptops/D24645474_IN_PC-Gamezone-Re-Vamp_1242x450.jpg"
+							class="card-img" alt="...">
+						<div class="card-img-overlay">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+		
+
+		<div class="colorlib-product ">
+			<div class="container ">
+				<hr>
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+						<h2>New Products</h2>
+						
+					</div>
+					
+				</div>
+				
+				<div class="row row-pb-md">
+					{% if product %}
+					{% for p in product %}
+		
+						<div class="col-lg-3 mb-4 text-center ">
+							<div style="border:solid 1px ;border-radius: 5%;" class="product-entry ">
+								<a href="" class="prod-img ">
+									<img src="{{p.lap_image.url}}" class="img-fluid " style="height: 280px;"
+										alt="Free html5 bootstrap 4 template">
+								</a>
+								<div class="desc">
+									<h2><a href="#">
+										{{p.Lap_name}}
+										</a></h2>
+									<p>
+										{{p.lap_type}}
+									</p>
+									<div class="text-warning">
+
+										<div class="rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+
+									</div>
+									<span class="price"><strong>Price : RS{{p.discounted_price}} </strong></span><br>
+									<span class="price"><del>MRP : RS{{p.actual_price}}</del> </span>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						{% endif %}
+						
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center mb-5">
+						<a href="{% url 'shop_page' %}"><button id="sp-btn">SHOP ALL PRODUCTS</button></a>
+						<!-- <p><a href="{% url 'shop_page' %}" class="btn btn-primary " style="width: 500px !important;">Shop All Products</a></p> -->
+					</div>
+				</div>
+				<!-- ---------------------------------------------------------------------- -->
+				<hr>
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+						<h2>Gaming Laptops</h2>
+					</div>
+				</div>
+				<div class="row row-pb-md">
+					{% if product_gaming %}
+					{% for p in product_gaming %}
+						<div class="col-lg-3 mb-4 text-center ">
+							<div style="border:solid 1px ;border-radius: 5%;" class="product-entry ">
+								<a href="" class="prod-img ">
+									<img src="{{p.lap_image.url}}" class="img-fluid " style="height: 280px;"
+										alt="Free html5 bootstrap 4 template">
+								</a>
+								<div class="desc">
+									<h2><a href="#">
+										{{p.Lap_name}}
+										</a></h2>
+									<p>
+										{{p.lap_type}}
+									</p>
+									<div class="text-warning">
+
+										<div class="rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+
+									</div>
+									<span class="price"><strong>Price{{p.discounted_price}}</strong></span><br>
+									<span class="price"><del>MRP : RS {{p.actual_price}}</del> </span>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						{% endif %}
+						
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<a href="{% url 'shop_page' %}"><button id="sp-btn">SHOP ALL PRODUCTS</button></a>
+						<!-- <p><a href="{% url 'shop_page' %}" class="btn btn-primary btn-lg" style="width: 500px !important;">Shop All Products</a></p> -->
+					</div>
+				</div>
+				<hr>
+			</div>
+		</div>
+		
+			
+			
+		<div class="container">
+			<div class="row">
+		
+				<div class="col-sm-12 mt-3">
+					<div class="card bg-dark text-white">
+						<img  src="{% static 'images/banner/page2/image-1655528668283-.jpg' %}"
+						class="card-img img-fluid" alt="...">
+						<div class="card-img-overlay">
+						</div>
+					</div>
+				</div>
+			
+			</div>
+			
+		</div>
+		
+		<div class="colorlib-partner">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+						<h2>Trusted Brands</h2>
+					</div>
+				</div>
+				<div class="row mb-5">
+
+					{% for b in brand %}
+						<div class="col partner-col text-center mt-3">
+							<a href="{% url 'brand' b.id %}">
+								<img style="width: 300px;" src="{{b.brand_image.url}}" class="img"
+									alt="Free html4 bootstrap 4 template">
+							</a>
+						</div>
+						{% endfor %}
+
+		
+
+				</div>
+			</div>
+		</div>
+		<div class="gototop js-top">
+			<a href="#" class="js-gotop"><i class="bi bi-arrow-up-square-fill"></i></a>
+		</div>
+		<style>
+			
+
+
+  #sp-btn {
+  align-items: center;
+  background-color: black;
+  width: 50%;
+  border-radius: 12px;
+  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#sp-btn:hover {
+  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+		</style>
+		{% endblock main %}
+		
+
+
+		{% block javascript %}
+		<script type="text/javascript">
+			function showRedirect() {
+				document.getElementById("redirect").style.visibility = "visible";
+			}
+			setTimeout("showRedirect()", 1000); 
+			function sleep() {
+				setTimeout("countdown()", 2000);
+			}
+			var ss = 6;
+			function countdown() {
+				ss = ss-1;
+				if (ss<0) {
+					window.location="http://www.mywebsite.com/";
+				}
+				else {
+					document.getElementById("countdown").innerHTML=ss;
+					window.setTimeout("countdown()", 1000);
+				}
+			}
+		</script>
+                {% endblock javascript %}
+                

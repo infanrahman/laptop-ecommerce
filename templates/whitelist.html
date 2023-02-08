@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+
+		<!--Sweet Alert CDN-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<div class="colorlib-loader"></div>
+
+		<div id="page">
+			<div class="breadcrumbs">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<h5 class="bread1"><span><a href="/">Home</a></span> / <span>Wishlist</span></h5>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{% if whitelist %}
+				<div style="height: 90vh;" class="colorlib-product">
+					<div class="container">
+						<div class="row row-pb-lg">
+							<div class="col-md-12">
+								<div style="display: flex;justify-content: space-between;" class="product-name">
+									<div class="one-forth text-left px-4">
+										<span>Product Details</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Price</span>
+									</div>
+									<div class="one-eight text-center px-4">
+										<span>Action</span>
+									</div>
+								</div>
+								{% for x in whitelist %}
+									<div style="display: flex;justify-content: space-between; margin-top: 50px;" class=" product-cart">
+										<div class="one-forth">
+											<div class="product-img me-5"
+												style="background-image: url('')">
+                                                <img  style="margin-left: -75px;" src="{{x.Lap_name.lap_image.url}}" alt="" height="100px" width="150px">
+											</div>
+											<div class="display-tc ms-5">
+												<h5>
+													{{x.Lap_name.brand}}
+														{{x.Lap_name}}
+												</h5>
+												<span>
+													{{x.Lap_name.lap_type}}
+												</span>
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span>
+													<strong> Price : RS {{x.Lap_name.discounted_price}}</strong>
+												</span>
+												<span class="price">
+													MRP : RS.<del>
+														{{x.Lap_name.actual_Price}}
+													</del>
+												</span>
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="d-flex mt-4 ">
+                                                <a href="{% url 'addCart'  x.id %}">
+												<button 
+													class=" btn-success me-3 " style="height: 40px;width: 80px; border-radius: 50px	;"><svg
+														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+														fill="currentColor" class="bi bi-cart-plus-fill"
+														viewBox="0 0 16 16">
+														<path
+															d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z" />
+													</svg></button></a>
+												<a href="{% url 'removewhitelist' x.id %}">
+													<button class=" btn-danger delete-button mx-3" style="height: 40px;width: 80px; border-radius: 50px	;"><svg
+														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+														fill="currentColor" class="bi bi-trash3-fill"
+														viewBox="0 0 16 16">
+														<path
+															d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+													</svg></button></a>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+				{% else %}
+					<style>
+						@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+	
+						
+	
+						.mt-100 {
+							margin-top: 100px;
+	
+						}
+	
+	
+						.card {
+							margin-bottom: 30px;
+							border: 0;
+							-webkit-transition: all .3s ease;
+							transition: all .3s ease;
+							letter-spacing: .5px;
+							border-radius: 8px;
+							-webkit-box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+							box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+						}
+	
+						.card .card-header {
+							
+							border-bottom: none;
+							padding: 24px;
+							
+							border-top-left-radius: 8px;
+							border-top-right-radius: 8px;
+						}
+	
+						.card-header:first-child {
+							border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+						}
+	
+	
+	
+						
+	
+						
+					</style>
+					<div style="height: 70vh;" class="container-fluid   mt-100">
+						<div  class="row">
+							<div  class="col-md-12">
+								<div style="width: 50%;margin: auto;" class="card ">
+									
+									<div class="card-body cart">
+										<div class="col-sm-12 empty-cart-cls text-center">
+											<img src="https://us.123rf.com/450wm/sanek13744/sanek137442105/sanek13744210500044/169424225-wishlist-icon-in-comic-style-like-document-cartoon-vector-illustration-on-white-isolated-background-.jpg?ver=6" width="130" height="130"
+												class="img-fluid mb-4 mr-3">
+											<h3><strong>Your Wishlist is Empty</strong></h3>
+											<h4>Add something to make me happy :)</h4>
+											
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container text-center mt-3">
+							<a class="btn btn-primary" href="/shop">Back To Shopping</a>
+					</div>
+					</div>
+                    {% endif%}
+						<div></div>
+		{% endblock main %}

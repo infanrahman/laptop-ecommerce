@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+
+<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+<!-- Css Styles -->
+<!-- <link rel="stylesheet" href="/client/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/client/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/client/css/elegant-icons.css" type="text/css" />
+<link rel="stylesheet" href="/client/css/jquery-ui.min.css" type="text/css" />
+<link rel="stylesheet" href="/client/css/magnific-popup.css" type="text/css" />
+<link rel="stylesheet" href="/client/css/owl.carousel.min.css" type="text/css" />
+<link rel="stylesheet" href="/client/css/slicknav.min.css" type="text/css" /> -->
+<link rel="stylesheet" href="{% static '/client/css/style.css' %}" type="text/css" />
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<!-- MDB -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
+<!-- ajax for immediate response for addtocart btn -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--Sweet Alert CDN-->
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock head %}
+
+{% block main %}
+
+        <!-- Page Preloder -->
+         <div id="preloder">
+            <div class="loader"></div>
+        </div>
+
+
+
+
+
+        <!-- Breadcrumb Begin -->
+        <div class="breadcrumb-option">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb__links">
+                            <a href="/"><i class="fa fa-home"></i> Home ></a>
+                            <a href="/shop_page"><span>Shop</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+
+        <!-- Shop Section Begin -->
+        <section style="min-height: 80vh;" class="shop spad">
+            <div class="container">
+                <div class="row">
+                    {% include 'filter.html' %}
+                    {% if not product and not search_product %}
+                    
+                        <img src="{% static 'images\banner\empty.gif' %}" alt="" srcset="" width="180px" height="300px" style="margin-top: -450px;margin-left: 100px;">
+                        {% else %}
+                        
+                        <div class="col-lg-9 col-md-9 ">
+                            <div class="row" id="products">
+                                {% if search_product %}
+                                    {% for p in search_product %}
+                                    
+                                    <div style="min-width: 280px;"
+                                        class="card col-lg-3 col-11 col-sm-10 col-md-8 m-4 text-center">
+                                        
+                                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                            
+                                            
+                                                <a href="{% url 'productdetails' p.id %}">
+                                            <img style="height: 250px;" src="{{p.lap_image.url}}"
+                                                class="img-fluid" /></a>
+                                            <a href="{% url 'productdetails' p.id %}">
+                                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                {{p.Lap_name}}
+                                            </h5>
+                                            <div class="text-warning">
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p class="card-text"><strong>Price : ₹{{p.discounted_price}}</strong><br> <del> MRP :{{p.actual_price}}
+                                                    </del>
+                                            </p>
+                                            {% if p.available_item %}
+                                            <p class="text-success"><strong>Only ' {{p.available_item}}' Product
+                                                Left</strong>
+                                            </p>
+                                                {% else %}
+                                                   
+                                                <p class="text-danger"><strong>Stockout</strong>
+                                                </p>
+                                                    {% endif %}
+                                                    <a href="{% url 'addtowhitelist' p.id %}">
+                                                        <button class="btn btn-danger"><i class="fa-solid fa-heart"></i></button></a>
+                                                        <a href="{% url 'addCart' p.id %}">
+                                                        <button class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button></a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% else %}
+                                    {% for p in product %}
+                                    
+                                    <div style="min-width: 280px;"
+                                        class="card col-lg-3 col-11 col-sm-10 col-md-8 m-4 text-center">
+                                        
+                                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                            
+                                            
+                                                <a href="{% url 'productdetails' p.id %}">
+                                            <img style="height: 250px;" src="{{p.lap_image.url}}"
+                                                class="img-fluid" /></a>
+                                            <a href="{% url 'productdetails' p.id %}">
+                                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                {{p.Lap_name}}
+                                            </h5>
+                                            <div class="text-warning">
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p class="card-text"><strong>Price : ₹{{p.discounted_price}}</strong><br> <del> MRP :{{p.actual_price}}
+                                                    </del>
+                                            </p>
+                                            {% if p.available_item %}
+                                            <p class="text-success"><strong>Only ' {{p.available_item}}' Product
+                                                Left</strong>
+                                            </p>
+                                                {% else %}
+                                                   
+                                                <p class="text-danger"><strong>Stockout</strong>
+                                                </p>
+                                                    {% endif %}
+                                                    <a href="{% url 'addtowhitelist' p.id %}">
+                                                        <button class="btn btn-danger"><i class="fa-solid fa-heart"></i></button></a>
+                                                        <a href="{% url 'addCart' p.id %}">
+                                                        <button class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button></a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                    
+                                    
+                                    
+
+
+                            </div>
+                        </div>
+                        {% endif %}
+                </div>
+            </div>
+        </section>
+        <!-- Shop Section End -->
+
+
+        {% endblock main %}
